@@ -49,25 +49,18 @@ body{
 }
 a{
     color:var(--text-color);
-    text-decoration:underline 0.1rem solid var(--theme-color-light);
-    text-decoration-skip-ink: none;
-    text-underline-offset: 0.1rem;
+    box-shadow: inset 0 -0.125rem 0 0rem var(--theme-color-light);
+    text-decoration: none;
     transition: all 0.2s;
 }
 a:hover{
-    text-underline-offset: -0.45rem;
-    text-decoration-thickness: 0.65rem;
-    text-underline-position: above;
+    box-shadow: inset 0 -0.7em 0 0 var(--theme-color-light);
+    text-decoration: none;
     transition: all 0.2s;
 }
 mark{
-    color:inherit;
-    background:none;
-    text-decoration:underline 0.5rem solid var(--text-highlight);
-    text-decoration-skip-ink: none;
-    text-underline-offset: -0.6rem;
-    text-decoration-thickness: 0.8rem;
-    text-underline-position: above;
+    box-shadow: inset 0 -0.8em 0 0 var(--text-highlight);
+    background: none;
 }
 textarea{
     resize: vertical;
@@ -181,6 +174,24 @@ input[type="range" i].win11ui::-webkit-slider-container {
     height: 20px;
     overflow: hidden;
 }
+input[type="button"],input[type="submit"],button{
+    -webkit-appearance: none;
+    appearance: none;
+    border:2px solid var(--theme-color-light);
+    padding:.3em .4em;
+    margin:2px 5px;
+    font-family:var(--font-family);
+    font-size:inherit;
+    background: inherit;
+    color:inherit;
+    outline:none;
+    transition: all 0.2s;
+}
+input[type="button"]:hover,input[type="submit"]:hover,button:hover{
+    background:var(--theme-color-lighter);
+    color:var(--background-light);
+    transition: all 0.2s;
+}
 select{
     border:2px solid var(--theme-color-light);
     padding:.3em;
@@ -189,6 +200,7 @@ select{
     background: inherit;
     color:inherit;
     outline:none;
+    background:var(--background-light);
 }
 select option{
     font-size:16px;
@@ -201,12 +213,13 @@ code{
     padding:2px;
     border-radius: 3px;
     margin:3px;
+    font-family: var(--code-font);
 }
 pre{
     -webkit-appearance: none;
     font-size:90%;
-    font-family: var(--code-font);
     border:2px solid var(--theme-color-light);
+    font-family: var(--code-font);
 }
 pre code{
     display:block;
@@ -214,7 +227,10 @@ pre code{
     padding:10px;
     font-size:100%;
 }
-::selection,::-moz-selection{
+::selection{
+    background:var(--select-light);
+}
+::-moz-selection{
     background:var(--select-light);
 }
 
@@ -228,19 +244,15 @@ pre code{
     }
     a{
         color:var(--text-color-dark);
-        text-decoration:underline 0.1rem solid var(--theme-color-dark);
-        text-decoration-skip-ink: none;
-        text-underline-offset: 0.1rem;
-        transition: all 0.2s;
+        box-shadow: inset 0 -0.125rem 0 0rem var(--theme-color-dark);
     }
     a:hover{
-        text-underline-offset: -0.45rem;
-        text-decoration-thickness: 0.65rem;
-        text-underline-position: above;
-        transition: all 0.2s;
+        box-shadow: inset 0 -0.7em 0 0 var(--theme-color-dark);
     }
     mark{
-        text-decoration-color: var(--text-highlight-dark);
+        color:var(--text-color-dark);
+        box-shadow: inset 0 -0.8em 0 0 var(--text-highlight-dark);
+        background: none;
     }
     input[type="text"],
     input[type="email"],
@@ -281,8 +293,17 @@ pre code{
     input[type="range"].win11ui::-webkit-slider-runnable-track {
         background: var(--theme-color-dark);
     }
+    input[type="button"],input[type="submit"],button{
+        border:2px solid var(--theme-color-dark);
+    }
+    input[type="button"]:hover,input[type="submit"]:hover,button:hover{
+        background:var(--theme-color-darker);
+        color:var(--background-dark);
+        transition: all 0.2s;
+    }
     select{
         border:2px solid var(--theme-color-dark);
+        background:var(--background-dark);
     }
     code{
         background:var(--code-background-dark);
@@ -291,30 +312,10 @@ pre code{
     pre{
         border:2px solid var(--theme-color-dark);
     }
-    ::selection,::-moz-selection{
+    ::selection{
         background:var(--select-dark);
     }
-}
-/* Safari I love u */
-@media (inverted-colors: none) {
-    a{
-        color:var(--theme-color-lighter);
-    }
-    a:hover{
-        color:var(--theme-color-light);
-    }
-    mark{
-        background: var(--text-highlight);
-    }
-    @media (prefers-color-scheme: dark){
-        a{
-            color:var(--theme-color-darker);
-        }
-        a:hover{
-            color:var(--theme-color-dark);
-        }
-        mark{
-            background: var(--text-highlight-dark);
-        }
+    ::-moz-selection{
+        background:var(--select-dark);
     }
 }
